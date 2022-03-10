@@ -42,13 +42,23 @@ function App() {
          setTasks([task, ...tasks])
      }
 
+     const changeTaskStatus = (id:string, isDone:boolean) => {
+         let task = tasks.find(f=> f.id === id)
+         if(task) {
+             task.isDone = isDone
+             setTasks([...tasks])
+         }
+     }
+
   return (
     <div className="App">
       <TodoList title={'What to learn'}
                 tasks={taskForTodoList}
                 changeFilter={changeFilter}
                 addTask={addTask}
-                removeTask={removeTask}/>
+                removeTask={removeTask}
+                changeTaskStatus={changeTaskStatus}
+                filter={filter}/>
     </div>
   );
 }
