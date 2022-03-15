@@ -31,7 +31,7 @@ function App() {
     ])
 
 
-    let [tasks, setTasks] = useState({
+    let [tasks, setTasks] = useState<TaskStateType>({
         [todoList1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JS', isDone: true},
@@ -131,10 +131,10 @@ function App() {
                         let allTodoListTasks = tasks[m.id];
                         let taskForTodoList = allTodoListTasks;
                         if (m.filter === 'ACTIVE') {
-                            taskForTodoList = allTodoListTasks.filter(t => t.isDone === false)
+                            taskForTodoList = allTodoListTasks.filter(t => !t.isDone)
                         }
                         if (m.filter === 'COMPLETED') {
-                            taskForTodoList = allTodoListTasks.filter(t => t.isDone === true)
+                            taskForTodoList = allTodoListTasks.filter(t => t.isDone)
                         }
                         return <Grid item>
                             <Paper style={{padding: '10px'}}>
